@@ -85,8 +85,5 @@ func (c *Cow) me() string {
 
 func (c *Cow) Say(message string) int {
 	fmt.Fprintf(c.outStream, c.serif(message) + c.me())
-
-	fmt.Println(c.serif(message) + c.me())
-
 	return ExitCodeOK
 }

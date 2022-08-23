@@ -1,6 +1,8 @@
 package main
 
 import (
+	"golang.org/x/crypto/ssh/terminal"
+	"io/ioutil"
 	"os"
 )
 
@@ -16,5 +18,8 @@ func main() {
 		errStream: os.Stdout,
 	}
 
-	os.Exit(cow.Say(os.Args[1]))
+	if terminal.IsTerminal(0) == false {
+		b, _ := ioutil.ReadAll(os.Stdin)
+		os.Exit(cow.Say(string(b)))
+	}
 }
